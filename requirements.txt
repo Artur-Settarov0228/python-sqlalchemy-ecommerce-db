@@ -1,3 +1,6 @@
+bcrypt==5.0.0
+passlib==1.7.4
+psycopg2-binary==2.9.11
 python-dotenv==1.2.1
 SQLAlchemy==2.0.46
 typing_extensions==4.15.0

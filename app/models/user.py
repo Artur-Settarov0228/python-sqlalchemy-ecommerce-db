@@ -14,4 +14,5 @@ class User(Base):
     first_name = Column(String(200), nullable=False)
     last_name = Column(String(200), nullable=False)
 
-    orsers = relationship('Orser', back_populates="user")
+    orders = relationship("Order", back_populates="user")
+
