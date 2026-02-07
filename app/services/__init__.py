@@ -1,2 +1,2 @@
 from .auth_service import *
-from .auth_menu import *
+from ..menu.auth_menu import *

@@ -1,16 +1,15 @@
-# main.py
-
-from app.services.auth_menu import auth_menu
+from app.menu.auth_menu import auth_menu
+from app.menu.user_menu import user_menu
 
 
 def main():
-    user = auth_menu()
+    while True:
+        user = auth_menu()
 
-    if user:
-        print(f"\n🔐 Login bo‘ldi: {user.username}")
-        # keyin order menu, product menu va hokazo
-    else:
-        print("\nDastur yopildi")
+        if user is None:
+            break
+
+        user_menu(user)
 
 
 if __name__ == "__main__":

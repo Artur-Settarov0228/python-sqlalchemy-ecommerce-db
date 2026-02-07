@@ -6,21 +6,22 @@ from app.services.auth_service import AuthService
 
 def auth_menu():
     """
-    1 - Register
-    2 - Login
-    3 - Exit
+    Login / Register menyu
+    Return:
+        - User object (login bo‘lsa)
+        - None (chiqish)
     """
     db = SessionLocal()
 
-    while True:
-        print("\n===== AUTH MENU =====")
-        print("1. Register")
-        print("2. Login")
-        print("3. Chiqish")
+    try:
+        while True:
+            print("\n===== AUTH MENU =====")
+            print("1. Register")
+            print("2. Login")
+            print("3. Chiqish")
 
-        choice = input("Tanlang (1/2/3): ").strip()
+            choice = input("Tanlang (1/2/3): ").strip()
 
-        try:
             if choice == "1":
                 print("\n--- REGISTRATION ---")
                 username = input("Username: ")
@@ -36,7 +37,7 @@ def auth_menu():
                     last_name=last_name
                 )
 
-                print(f"\n✅ User yaratildi! ID={user.id}")
+                print(f"✅ User yaratildi: {user.username}")
 
             elif choice == "2":
                 print("\n--- LOGIN ---")
@@ -49,18 +50,18 @@ def auth_menu():
                     password=password
                 )
 
-                print(f"\n✅ Xush kelibsiz, {user.first_name}!")
-
-                return user  # 👈 MUHIM: login bo‘lsa user qaytaradi
+                print(f"✅ Xush kelibsiz, {user.first_name}!")
+                return user
 
             elif choice == "3":
-                print("\n👋 Dasturdan chiqildi")
+                print("👋 Dasturdan chiqildi")
                 return None
 
             else:
-                print("\n❌ Noto‘g‘ri tanlov")
+                print("❌ Noto‘g‘ri tanlov")
 
-        except Exception as e:
-            print("\n❌ Xato:", e)
+    except Exception as e:
+        print("❌ Xato:", e)
 
+    finally:
         db.close()
